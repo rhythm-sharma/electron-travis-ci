@@ -1,60 +1,35 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
-  "main": "main.js",
-  "build": {
-    "appId": "org.breta.MemoryKing",
-    "category": "public.app-category.education",
-    "files": [
-      "dist/",
-      "node_modules/",
-      "static/",
-      "main.js",
-      "index.html",
-      "package.json"
-    ],
-    "dmg": {
-      "contents": [
-        {
-          "x": 130,
-          "y": 220
-        },
-        {
-          "x": 410,
-          "y": 220,
-          "type": "link",
-          "path": "/Applications"
-        }
-      ]
-    },
-    "win": {
-      "target": "nsis"
-    },
-    "linux": {
-      "target": [
-        "AppImage",
-        "deb"
-      ]
-    }
-  },
-  "scripts": {
-    "start": "electron .",
-    "postinstall": "install-app-deps",
-    "dist": "npm run build && build --publish onTagOrDraft"
-  },
-  "repository": "https://github.com/rrhythmsharma/electron-travis-ci",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
-  "devDependencies": {
-    "electron": "^6.0.2",
-    "electron-builder": "^21.2.0"
-  }
+"name": "name_of_app",
+"version": "0.1.0",
+"scripts": {
+	"release": "build"
+},
+"repository": "https://github.com/user_name/repo_name",
+"devDependencies": {
+	"electron-builder": "10.5.0"
+},
+"dependencies": {
+	"electron-auto-updater": "0.6.2"
+},
+"build":{
+	"appId": "electron-builder",
+	"productName": "app description",
+	"files":[
+		"app/**/*",
+		"node_modules/**/*",
+		"package.json"
+	],
+	"linux":{
+		"target":[
+			"deb"
+		]
+	},
+	"publish":{
+		"provider": "github"
+	},
+	"win":{
+		"publish":["github"],
+		"remoteReleases": "https://github.com/rrhythmsharma/electron-travis-ci"
+	}
+}
 }

@@ -1,22 +1,9 @@
-sudo: required
-dist: trusty
+os:
+  - linux
 
 language: node_js
-
-node_js:
-  -  "stable"
-
-os:
-- osx
-- linux
-
-cache:
-  directories:
-    - node_modules
-
-install:
-  - npm install electron-builder@next
-  - npm install
+sudo: false
+node_js: node
 
 script:
-  - npm run dist
+  - npm run release
