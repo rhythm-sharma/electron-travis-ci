@@ -1,21 +1,22 @@
-sudo: false
+sudo: required
+dist: trusty
 
 language: node_js
 
 node_js:
   -  "stable"
 
-cache: npm
+os:
+- osx
+- linux
 
-install: 
-  - npm ci
+cache:
+  directories:
+    - node_modules
 
-script: 
-  - npm test
+install:
+  - npm install electron-builder@next
+  - npm install
 
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN
-  on:
-    branch: master
+script:
+  - npm run dist
