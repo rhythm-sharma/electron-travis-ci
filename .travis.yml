@@ -34,3 +34,14 @@ script:
   echo "Hello Travis"
   - npm test
   - npm run dist
+
+deploy:
+     provider: releases
+     api_key: $GITHUB_TOKEN
+     file: 
+         - node_modules/7zip-bin/linux/arm64/7za
+         - node_modules/7zip-bin/linux/x64/7za
+     skip_cleanup: true
+     on:
+         repo: 
+          rrhythmsharma/electron-travis-ci
