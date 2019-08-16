@@ -44,6 +44,9 @@
 		  ]
 		}
 	  },
+	"directories": {
+	"output": "release"
+	},
 	"keywords": [
 		"Electron",
 		"quick",
@@ -51,7 +54,11 @@
 		"tutorial",
 		"travis-ci"
 	],
-	"author": "GitHub",
+	"author": {
+		"name": "Rhythm Sharma",
+		"email": "rrhythmsharma@gmail.com",
+		"url": "https://github.com/rrhythmsharma"
+	},
 	"license": "CC0-1.0",
 	"devDependencies": {
 		"electron": "^6.0.2",
