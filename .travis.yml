@@ -32,4 +32,6 @@ before_script:
 
 script: 
   echo "Hello Travis"
+  - npm test
   - npm run dist
+  - echo "Deploy linux version to GitHub"
