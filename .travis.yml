@@ -1,5 +1,7 @@
 sudo: false
 
+dist: trusty
+
 language: node_js
 
 node_js: 
@@ -10,9 +12,11 @@ os:
 - osx
 
 cache:
+  yarn: true
   directories:
-    - node_modules
-
+    - $HOME/.cache/electron
+    - $HOME/.cache/electron-builder
+    - $HOME/.npm/_prebuilds
 
 addons:
   apt:
@@ -24,6 +28,7 @@ install:
   - npm install
   - export DISPLAY=':99.0'
   - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+  - yarn
 
 before_script:
   - export DISPLAY=:99.0
@@ -33,11 +38,7 @@ before_script:
 script: 
   echo "Hello Travis"
   - npm test
-  - npm run build
-  - ls ./dist;
-  - find . | grep mac.zip;
-  - find . | grep x86_64.AppImage;
-  - find . | grep .exe;
+  - npm run release:all
 
 deploy:
      provider: releases
