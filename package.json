@@ -6,7 +6,8 @@
 	"scripts": {
 		"start": "electron .",
 		"postinstall": "install-app-deps",
-		"dist": "npm run build -- -c production && build -mwl -p always"
+		"dist": "npm run build -- -c production && build -mwl -p always",
+		"build": "electron-builder -mwl --publish always"
 	},
 	"repository": "https://github.com/rrhythmsharma/electron-travis-ci",
 	"build": {
@@ -35,14 +36,33 @@
 		  ]
 		},
 		"win": {
-		  "target": "nsis"
+			"target": [
+			  {
+				"target": "nsis-web",
+				"arch": [
+				  "x64",
+				  "ia32"
+				]
+			  },
+			  {
+				"target": "msi",
+				"arch": [
+				  "x64",
+				  "ia32"
+				]
+			  }
+			]
 		},
 		"linux": {
-		  "target": [
-			"AppImage",
-			"deb"
-		  ]
-		}
+			"category": "Chat;GNOME;GTK;Network;InstantMessaging",
+			"packageCategory": "GNOME;GTK;Network;InstantMessaging",
+			"description": "electron-quick-start for Linux",
+			"target": [
+			  "deb",
+			  "zip",
+			  "AppImage"
+			]
+		  }
 	  },
 	"directories": {
 	"output": "release"

@@ -33,14 +33,17 @@ before_script:
 script: 
   echo "Hello Travis"
   - npm test
-  - npm run dist
+  - npm run build
+  - ls ./dist;
+  - find . | grep mac.zip;
+  - find . | grep x86_64.AppImage;
+  - find . | grep .exe;
 
 deploy:
      provider: releases
      api_key: $GITHUB_TOKEN
      file: 
-         - node_modules/7zip-bin/linux/arm64/7za
-         - node_modules/7zip-bin/linux/x64/7za
+         - ./dist/*
      skip_cleanup: true
      on:
          repo: 
