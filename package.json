@@ -6,7 +6,8 @@
 	"scripts": {
 		"start": "electron .",
 		"postinstall": "install-app-deps",
-		"dist": "npm run build -- -c production && build -mwl -p always"
+		"dist": "npm run build -- -c production && electron-builder -mwl -p always",
+		"release": "yarn compile && electron-builder --linux"
 	},
 	"repository": "https://github.com/rrhythmsharma/electron-travis-ci",
 	"build": {
