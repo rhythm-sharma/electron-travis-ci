@@ -6,11 +6,6 @@ language: node_js
 
 node_js: "8"
 
-
-before_install:
-  - cd app
-
-
 env:
   global:
     - ELECTRON_CACHE=$HOME/.cache/electron
@@ -45,7 +40,7 @@ jobs:
       script: 
         - npm test
     
-        - stage: Deploy Windows & Mac
+    - stage: Deploy Windows & Mac
       os: osx
       osx_image: xcode10.1
       script:
