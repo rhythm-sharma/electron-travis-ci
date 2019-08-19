@@ -1,87 +1,65 @@
 {
-	"name": "electron-quick-start",
-	"version": "1.0.0",
-	"description": "A minimal Electron application",
-	"main": "main.js",
-	"scripts": {
-		"start": "electron .",
-		"postinstall": "install-app-deps",
-		"dist": "npm run build -- -c production && electron-builder -mwl -p always",
-		"release": "yarn compile && electron-builder --linux"
-	},
-	"repository": "https://github.com/rrhythmsharma/electron-travis-ci",
-	"build": {
-		"appId": "electron-travis-ci",
-		"category": "test",
-		"files": [
-		  "dist/",
-		  "node_modules/",
-		  "static/",
-		  "main.js",
-		  "index.html",
-		  "package.json"
-		],
-		"dmg": {
-		  "contents": [
-			{
-			  "x": 130,
-			  "y": 220
-			},
-			{
-			  "x": 410,
-			  "y": 220,
-			  "type": "link",
-			  "path": "/Applications"
-			}
-		  ]
-		},
-		"win": {
-			"target": [
-			  {
-				"target": "nsis-web",
-				"arch": [
-				  "x64",
-				  "ia32"
-				]
-			  },
-			  {
-				"target": "msi",
-				"arch": [
-				  "x64",
-				  "ia32"
-				]
-			  }
-			]
-		},
-		"linux": {
-			"category": "Chat;GNOME;GTK;Network;InstantMessaging",
-			"packageCategory": "GNOME;GTK;Network;InstantMessaging",
-			"description": "electron-quick-start for Linux",
-			"target": [
-			  "deb",
-			  "zip",
-			  "AppImage"
-			]
-		  }
-	  },
-	"directories": {
-	"output": "release"
-	},
-	"keywords": [
-		"Electron",
-		"quick",
-		"start",
-		"tutorial",
-		"travis-ci"
-	],
-	"author": {
-		"name": "Rhythm Sharma",
-		"email": "rrhythmsharma@gmail.com",
-		"url": "https://github.com/rrhythmsharma"
-	},
-	"license": "CC0-1.0",
-	"devDependencies": {
-		"electron": "^6.0.2",
-		"electron-builder": "^21.2.0"
-	}
+  "name": "electron-quick-start",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --linux",
+    "release": "electron-builder",
+    "postinstall": "install-app-deps",
+    "start": "electron ."
+  },
+  "repository": "https://github.com/rrhythmsharma/electron-travis-ci",
+  "build": {
+    "appId": "electron-quick-start",
+    "productName": "electron-quick-start",
+    "linux": {
+      "category": "Utils",
+      "packageCategory": "utils",
+      "maintainer": "Rhythm Sharma",
+      "target": [
+        "deb",
+        "rpm",
+        "AppImage"
+      ],
+      "synopsis": "electron-quick-start"
+    },
+    "deb": {
+      "depends": [
+        "gconf2",
+        "gconf-service",
+        "libnotify4",
+        "libappindicator1",
+        "libxtst6",
+        "libnss3"
+      ]
+    },
+    "rpm": {
+      "depends": [
+        "GConf2",
+        "libnotify",
+        "nss",
+        "libappindicator",
+        "libXtst"
+      ]
+    }
+  },
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "travis-ci"
+  ],
+  "author": {
+    "name": "Rhythm Sharma",
+    "email": "rrhythmsharma@gmail.com",
+    "url": "https://github.com/rrhythmsharma"
+  },
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^6.0.2",
+    "electron-builder": "^21.2.0"
+  }
 }
