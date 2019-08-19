@@ -42,7 +42,8 @@ deploy:
      provider: releases
      api_key: $GITHUB_TOKEN
      file: 
-         - node_modules/7zip-bin/linux/*
+         - dist/electron-quick-start-1.0.0.AppImage
+         - dist/electron-quick-start-1.0.0.x86_64.rpm
      skip_cleanup: true
      on:
          repo: 
