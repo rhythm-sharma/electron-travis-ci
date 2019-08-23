@@ -1,11 +1,12 @@
 {
   "name": "electron-quick-start",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
     "pack": "electron-builder --dir",
-    "dist": "electron-builder --linux -p always",
+    "dist:linux": "electron-builder --linux -p always",
+    "dist:osx": "electron-builder --mac -p always", 
     "release": "electron-builder",
     "postinstall": "install-app-deps",
     "start": "electron ."
@@ -21,58 +22,52 @@
       "target": [
         "deb",
         "rpm",
-        "AppImage",
-        "snap"
+        "AppImage"
       ],
       "synopsis": "electron-quick-start"
     },
-    "deb": {
-      "depends": [
-        "gconf2",
-        "gconf-service",
-        "libnotify4",
-        "libappindicator1",
-        "libxtst6",
-        "libnss3"
-      ]
+      "deb": {
+        "depends": [
+          "gconf2",
+          "gconf-service",
+          "libnotify4",
+          "libappindicator1",
+          "libxtst6",
+          "libnss3"
+        ]
+      },
+      "rpm": {
+        "depends": [
+          "GConf2",
+          "libnotify",
+          "nss",
+          "libappindicator",
+          "libXtst"
+        ]
+      },
+    "mac": {
+      "target": [ "dmg" ],
+      "identity": null,
+      "category": "public.app-category.utilities"
     },
-    "rpm": {
-      "depends": [
-        "GConf2",
-        "libnotify",
-        "nss",
-        "libappindicator",
-        "libXtst"
-      ]
-    },
-    "snap": {
-      "confinement": "strict",
-      "summary": "electron-quick-start",
-      "grade": "stable",
-      "stagePackages": [
-        "libnotify4",
-        "libappindicator1",
-        "libxtst6",
-        "libnss3",
-        "libxss1",
-        "fontconfig-config",
-        "gconf2",
-        "libasound2",
-        "pulseaudio"
-      ],
-      "plugs": [
-        "desktop",
-        "desktop-legacy",
-        "home",
-        "x11",
-        "unity7",
-        "browser-support",
-        "network",
-        "gsettings",
-        "pulseaudio",
-        "opengl"
-      ]
-    }
+      "dmg": {
+        "window": {
+          "width": 544,
+          "height": 408
+        },
+        "contents": [
+          {
+            "x": 145,
+            "y": 257
+          },
+          {
+            "x": 400,
+            "y": 255,
+            "type": "link",
+            "path": "/Applications"
+          }
+        ]
+      }
   },
   "keywords": [
     "Electron",
