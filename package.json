@@ -21,7 +21,8 @@
       "target": [
         "deb",
         "rpm",
-        "AppImage"
+        "AppImage",
+        "snap"
       ],
       "synopsis": "electron-quick-start"
     },
@@ -42,6 +43,34 @@
         "nss",
         "libappindicator",
         "libXtst"
+      ]
+    },
+    "snap": {
+      "confinement": "strict",
+      "summary": "electron-quick-start",
+      "grade": "stable",
+      "stagePackages": [
+        "libnotify4",
+        "libappindicator1",
+        "libxtst6",
+        "libnss3",
+        "libxss1",
+        "fontconfig-config",
+        "gconf2",
+        "libasound2",
+        "pulseaudio"
+      ],
+      "plugs": [
+        "desktop",
+        "desktop-legacy",
+        "home",
+        "x11",
+        "unity7",
+        "browser-support",
+        "network",
+        "gsettings",
+        "pulseaudio",
+        "opengl"
       ]
     }
   },
