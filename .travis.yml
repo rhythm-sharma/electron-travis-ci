@@ -1,4 +1,4 @@
-sudo: false
+sudo: required
 
 dist: trusty
 
@@ -31,7 +31,7 @@ addons:
 install:
   - npm install electron-builder@next
   - npm install
-  - snap install snapcraft --classic
+  - sudo snap install snapcraft --classic
   - export DISPLAY=':99.0'
   - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 
