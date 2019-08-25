@@ -51,12 +51,12 @@ deploy:
      provider: releases
      api_key: $GITHUB_TOKEN
      file: 
-      - dist/electron-quick-start-1.3.0.AppImage
-      - dist/electron-quick-start-1.3.0.x86_64.rpm
-      - dist/electron-quick-start_1.3.0_amd64.deb
-      - dist/electron-quick-start_1.3.0_amd64.snap
-      - dist/electron-quick-start-1.3.0.linux-x64.zip
-      - dist/electron-quick-start-1.3.0.dmg
+        - dist/electron-quick-start-1.4.0.AppImage
+        - dist/electron-quick-start-1.4.0.x86_64.rpm
+        - dist/electron-quick-start_1.4.0_amd64.deb
+        - dist/electron-quick-start_1.4.0_amd64.snap
+        - dist/electron-quick-start-1.4.0.linux-x64.zip
+        - dist/electron-quick-start-1.4.0.dmg
      skip_cleanup: true
      on:
          repo: 
