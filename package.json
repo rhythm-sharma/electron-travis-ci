@@ -1,6 +1,6 @@
 {
   "name": "electron-quick-start",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
@@ -23,7 +23,8 @@
         "deb",
         "rpm",
         "AppImage",
-        "zip"
+        "zip",
+        "snap"
       ],
       "synopsis": "electron-quick-start"
     },
@@ -44,6 +45,22 @@
           "nss",
           "libappindicator",
           "libXtst"
+        ]
+      },
+      "snap": {
+        "confinement": "strict",
+        "summary": "electron-quick-start",
+        "grade": "stable",
+        "stagePackages": [
+          "libnotify4",
+          "libappindicator1",
+          "libxtst6",
+          "libnss3",
+          "libxss1",
+          "fontconfig-config",
+          "gconf2",
+          "libasound2",
+          "pulseaudio"
         ]
       },
     "mac": {
