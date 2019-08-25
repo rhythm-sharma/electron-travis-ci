@@ -1,4 +1,4 @@
-sudo: required
+sudo: false
 
 dist: trusty
 
@@ -27,6 +27,7 @@ addons:
     packages:
       - xvfb
       - rpm
+      - snapd
 
 install:
   - npm install electron-builder@next
@@ -57,6 +58,8 @@ deploy:
      file: 
          - dist/electron-quick-start-1.2.0.AppImage
          - dist/electron-quick-start-1.2.0.x86_64.rpm
+         - dist/electron-quick-start_1.1.0_amd64.deb
+         - dist/electron-quick-start_1.1.0_amd64.snap
          - dist/electron-quick-start-1.2.0.linux-x64.zip
          - dist/electron-quick-start-1.2.0.dmg
      skip_cleanup: true
