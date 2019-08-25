@@ -1,6 +1,6 @@
 {
   "name": "electron-quick-start",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
@@ -22,8 +22,7 @@
       "target": [
         "deb",
         "rpm",
-        "AppImage",
-        "snap"
+        "AppImage"
       ],
       "synopsis": "electron-quick-start"
     },
@@ -44,34 +43,6 @@
           "nss",
           "libappindicator",
           "libXtst"
-        ]
-      },
-      "snap": {
-        "confinement": "strict",
-        "summary": "A minimalistic digital clock rendered in monospace font",
-        "grade": "stable",
-        "stagePackages": [
-          "libnotify4",
-          "libappindicator1",
-          "libxtst6",
-          "libnss3",
-          "libxss1",
-          "fontconfig-config",
-          "gconf2",
-          "libasound2",
-          "pulseaudio"
-        ],
-        "plugs": [
-          "desktop",
-          "desktop-legacy",
-          "home",
-          "x11",
-          "unity7",
-          "browser-support",
-          "network",
-          "gsettings",
-          "pulseaudio",
-          "opengl"
         ]
       },
     "mac": {
