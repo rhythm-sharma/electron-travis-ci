@@ -48,16 +48,11 @@ before_cache:
   - rm -rf $HOME/Library/Caches/electron-builder
 
 deploy:
-     provider: releases
-     api_key: $GITHUB_TOKEN
-     file: 
-      - dist/electron-quick-start-1.5.1.AppImage
-      - dist/electron-quick-start-1.5.1.x86_64.rpm
-      - dist/electron-quick-start_1.5.1_amd64.deb
-      - dist/electron-quick-start_1.5.1_amd64.snap
-      - dist/electron-quick-start-1.5.1.linux-x64.zip
-      - dist/electron-quick-start-1.5.1.dmg
-     skip_cleanup: true
-     on:
-         repo: 
-          rrhythmsharma/electron-travis-ci
+    provider: releases
+    api_key: $GITHUB_TOKEN
+    file_glob: true
+    file: $TRAVIS_BUILD_DIR/dist/*
+    skip_cleanup: true
+    on:
+        repo: 
+        rrhythmsharma/electron-travis-ci
