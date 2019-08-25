@@ -1,45 +1,34 @@
-# electron-quick-start
+# It is an Eample for creating electron artifacts using Travis-Ci for linux and Macos 
 
-**Clone and run for a quick way to see Electron in action.**
+#### explaination
+I have created this project as an example for building electron artifacts using Travis-Ci for linux and Macos. I've used electron-builder for building installers for all OS, Created .travis.xml and added build and script section in package.json  
 
-This is a minimal Electron application based on the [Quick Start Guide](https://electronjs.org/docs/tutorial/quick-start) within the Electron documentation.
+#### Steps
+* Create an electron project and push to github
+* if you are new to setup travis-ci for github repository then check out this article here [continuous-integration-using-travis-on-github](https://hackernoon.com/continuous-integration-using-travis-on-github-1f7f2314b6b7)
+* create a `.travis.xml` file, which tells Travis-ci what to do?
+* checkout this tutorial on how to write .travis.xml files? [travis-ci-tutorial](https://docs.travis-ci.com/user/tutorial/) and also checkout my [.travis.xml](https://github.com/rrhythmsharma/electron-travis-ci/blob/master/.travis.yml) file for reference
+* It is important that you must add below code inside .travis.xml for building electron artifacts, checkout this [electron doc](https://electronjs.org/docs/tutorial/testing-on-headless-ci#travis-ci) for reason.
+    * addons:
+      apt:
+        packages:
+          - xvfb    
+    * install:
+      - npm install electron-builder@next
+      - export DISPLAY=':99.0'
+      - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 
-**Use this app along with the [Electron API Demos](https://electronjs.org/#get-started) app for API code examples to help you get started.**
+    * before_script:
+      - export DISPLAY=:99.0
+      - sh -e /etc/init.d/xvfb start &
+      - sleep 3
 
-A basic Electron application needs just these files:
+* now configure package.json by adding build script for linux and macOS
+* I've added two scripts, first one is dist:linux(for linux) and second one is dist:osx(for macOS)
+* now add build property in package.json which defines your build targets, checkout my [package.json#L15](https://github.com/rrhythmsharma/electron-travis-ci/blob/master/package.json#L15) for reference.
+* I've added "deb", "rpm", "AppImage", "zip" inside target for linux then defined the targets and for macOS added only "dmg" then defined the dmg target.
+* I've added the deploy section for automatic deployment of artifacts, which uses your github_token for more info check this [github-auth-token-on-travis](https://blog.wyrihaximus.net/2015/09/github-auth-token-on-travis/) out 
+* that's it, push this changes to your github repository and see the result 
+* if everything is right an automatic build will be started by travis, which first build the defined targets in package.json then deploy them to your github release page on every commit.
 
-- `package.json` - Points to the app's main file and lists its details and dependencies.
-- `main.js` - Starts the app and creates a browser window to render HTML. This is the app's **main process**.
-- `index.html` - A web page to render. This is the app's **renderer process**.
-
-You can learn more about each of these components within the [Quick Start Guide](https://electronjs.org/docs/tutorial/quick-start).
-
-## To Use
-
-To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
-
-```bash
-# Clone this repository
-git clone https://github.com/electron/electron-quick-start
-# Go into the repository
-cd electron-quick-start
-# Install dependencies
-npm install
-# Run the app
-npm start
-```
-
-Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
-
-## Resources for Learning Electron
-
-- [electronjs.org/docs](https://electronjs.org/docs) - all of Electron's documentation
-- [electronjs.org/community#boilerplates](https://electronjs.org/community#boilerplates) - sample starter apps created by the community
-- [electron/electron-quick-start](https://github.com/electron/electron-quick-start) - a very basic starter Electron app
-- [electron/simple-samples](https://github.com/electron/simple-samples) - small applications with ideas for taking them further
-- [electron/electron-api-demos](https://github.com/electron/electron-api-demos) - an Electron app that teaches you how to use Electron
-- [hokein/electron-sample-apps](https://github.com/hokein/electron-sample-apps) - small demo apps for the various Electron APIs
-
-## License
-
-[CC0 1.0 (Public Domain)](LICENSE.md)
+### create an issue if you are facing problems :)
