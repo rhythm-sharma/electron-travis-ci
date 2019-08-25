@@ -27,12 +27,10 @@ addons:
     packages:
       - xvfb
       - rpm
-      - snapd
 
 install:
   - npm install electron-builder@next
   - npm install
-  - sudo snap install snapcraft --classic
   - export DISPLAY=':99.0'
   - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 
@@ -45,10 +43,6 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run dist:linux; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then npm run dist:osx; fi
 
-after_script:
-  - echo $HOME/Library/Caches/electron-builder
-  - echo dist
-
 before_cache:
   - rm -rf $HOME/Library/Caches/electron-builder
 
@@ -59,7 +53,6 @@ deploy:
          - dist/electron-quick-start-1.2.0.AppImage
          - dist/electron-quick-start-1.2.0.x86_64.rpm
          - dist/electron-quick-start_1.1.0_amd64.deb
-         - dist/electron-quick-start_1.1.0_amd64.snap
          - dist/electron-quick-start-1.2.0.linux-x64.zip
          - dist/electron-quick-start-1.2.0.dmg
      skip_cleanup: true
