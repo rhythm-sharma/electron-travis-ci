@@ -1,6 +1,6 @@
-sudo: required
+sudo: false
 
-dist: xenial
+dist: trusty
 
 language: node_js
 
