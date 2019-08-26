@@ -50,7 +50,15 @@
       ]
     },
     "snap": {
-      "synopsis": "electron-quick-start"
+      "synopsis": "electron-quick-start",
+      "publish": [
+        {
+          "package": "electron-quick-start",
+          "repo": "electron-travis-ci",
+          "owner": "rrhythmsharma",
+          "provider": "github"
+        }
+      ]
     },
     "mac": {
       "target": [
