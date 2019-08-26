@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "pack": "electron-builder --dir",
-    "build:linux": "electron-builder", 
+    "dist:win": "electron-builder --win", 
     "dist:linux": "electron-builder --linux -p always",
     "dist:osx": "electron-builder --mac -p always", 
     "release": "electron-builder",
@@ -24,8 +24,7 @@
         "deb",
         "rpm",
         "AppImage",
-        "zip",
-        "snap"
+        "zip"
       ],
       "synopsis": "electron-quick-start"
     },
@@ -46,22 +45,6 @@
           "nss",
           "libappindicator",
           "libXtst"
-        ]
-      },
-      "snap": {
-        "confinement": "strict",
-        "summary": "electron-quick-start",
-        "grade": "stable",
-        "stagePackages": [
-          "libnotify4",
-          "libappindicator1",
-          "libxtst6",
-          "libnss3",
-          "libxss1",
-          "fontconfig-config",
-          "gconf2",
-          "libasound2",
-          "pulseaudio"
         ]
       },
     "mac": {
@@ -85,7 +68,31 @@
             "type": "link",
             "path": "/Applications"
           }
+        ],
+        "icon": "build/icon.ico"
+      },
+      "win": {
+        "target": [
+          {
+            "target": "nsis-web",
+            "arch": [
+              "x64",
+              "ia32"
+            ]
+          },
+          {
+            "target": "msi",
+            "arch": [
+              "x64",
+              "ia32"
+            ]
+          }
         ]
+      },
+      "nsis": {
+        "allowToChangeInstallationDirectory": true,
+        "oneClick": false,
+        "perMachine": false
       }
   },
   "keywords": [
