@@ -1,14 +1,15 @@
 {
   "name": "electron-quick-start",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
     "pack": "electron-builder --dir",
-    "dist:win": "electron-builder --win", 
+    "dist:win": "electron-builder --win",
     "dist:linux": "electron-builder --linux -p always",
-    "dist:osx": "electron-builder --mac -p always", 
+    "dist:osx": "electron-builder --mac -p always",
     "release": "electron-builder",
+    "dist:snap": "electron-builder --linux snap",
     "postinstall": "install-app-deps",
     "start": "electron ."
   },
@@ -24,76 +25,85 @@
         "deb",
         "rpm",
         "AppImage",
-        "zip"
+        "zip",
+        "snap"
       ],
       "synopsis": "electron-quick-start"
     },
-      "deb": {
-        "depends": [
-          "gconf2",
-          "gconf-service",
-          "libnotify4",
-          "libappindicator1",
-          "libxtst6",
-          "libnss3"
-        ]
-      },
-      "rpm": {
-        "depends": [
-          "GConf2",
-          "libnotify",
-          "nss",
-          "libappindicator",
-          "libXtst"
-        ]
-      },
+    "deb": {
+      "depends": [
+        "gconf2",
+        "gconf-service",
+        "libnotify4",
+        "libappindicator1",
+        "libxtst6",
+        "libnss3"
+      ]
+    },
+    "rpm": {
+      "depends": [
+        "GConf2",
+        "libnotify",
+        "nss",
+        "libappindicator",
+        "libXtst"
+      ]
+    },
+    "snap": {
+      "synopsis": "electron-quick-start"
+    },
     "mac": {
-      "target": [ "dmg" ],
+      "target": [
+        "dmg"
+      ],
       "identity": null,
       "category": "public.app-category.utilities"
     },
-      "dmg": {
-        "window": {
-          "width": 544,
-          "height": 408
+    "dmg": {
+      "background": "build/appdmg.png",
+      "icon": "build/icon.icns",
+      "iconSize": 100,
+      "window": {
+        "width": 544,
+        "height": 408
+      },
+      "contents": [
+        {
+          "x": 145,
+          "y": 257
         },
-        "contents": [
-          {
-            "x": 145,
-            "y": 257
-          },
-          {
-            "x": 400,
-            "y": 255,
-            "type": "link",
-            "path": "/Applications"
-          }
-        ],
-        "icon": "build/icon.ico"
-      },
-      "win": {
-        "target": [
-          {
-            "target": "nsis-web",
-            "arch": [
-              "x64",
-              "ia32"
-            ]
-          },
-          {
-            "target": "msi",
-            "arch": [
-              "x64",
-              "ia32"
-            ]
-          }
-        ]
-      },
-      "nsis": {
-        "allowToChangeInstallationDirectory": true,
-        "oneClick": false,
-        "perMachine": false
-      }
+        {
+          "x": 400,
+          "y": 255,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis-web",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        },
+        {
+          "target": "msi",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false,
+      "perMachine": false
+    }
   },
   "keywords": [
     "Electron",

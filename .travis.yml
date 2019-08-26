@@ -33,8 +33,6 @@ install:
   - npm install
   - export DISPLAY=':99.0'
   - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-  # - if [[ ("$TRAVIS_OS_NAME" == "linux") ]]; then sudo snap install snapcraft --classic; fi
-  # - if [[ ("$TRAVIS_OS_NAME" == "linux") ]]; then sudo snap install multipass --beta --classic; fi
 
 before_script:
   - export DISPLAY=:99.0
@@ -42,8 +40,8 @@ before_script:
   - sleep 3
 
 script:
-  - if [[ ("$TRAVIS_OS_NAME" == "linux") ]]; then npm run dist:linux; fi
-  - if [[ ("$TRAVIS_OS_NAME" == "osx") ]]; then npm run dist:osx; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run dist:linux ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then npm run dist:osx; fi
 
 before_cache:
   - rm -rf $HOME/Library/Caches/electron-builder
@@ -52,11 +50,12 @@ deploy:
      provider: releases
      api_key: $GITHUB_TOKEN
      file: 
-        - dist/electron-quick-start-1.4.1.AppImage
-        - dist/electron-quick-start-1.4.1.x86_64.rpm
-        - dist/electron-quick-start_1.4.1_amd64.deb
-        - dist/electron-quick-start-1.4.1.linux-x64.zip
-        - dist/electron-quick-start-1.4.1.dmg
+         - dist/electron-quick-start-1.4.2.AppImage
+         - dist/electron-quick-start-1.4.2.x86_64.rpm
+         - dist/electron-quick-start_1.4.2_amd64.deb
+         - dist/electron-quick-start_1.4.2_amd64.snap
+         - dist/electron-quick-start-1.4.2.linux-x64.zip
+         - dist/electron-quick-start-1.4.2.dmg
      skip_cleanup: true
      on:
          repo: 
